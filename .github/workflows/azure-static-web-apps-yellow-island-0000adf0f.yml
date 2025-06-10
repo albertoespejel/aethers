@@ -25,7 +25,7 @@ jobs:
         working-directory: aethers_app
 
       - name: Build app
-        run: npm run build && npm run export
+        run: npm run build
         working-directory: aethers_app
 
       - name: Deploy to Azure Static Web Apps
