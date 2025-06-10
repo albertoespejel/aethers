@@ -19,13 +19,14 @@ jobs:
         with:
           submodules: true
           lfs: false
+          
       - name: Install dependencies
         run: npm install
+        working-directory: aethers_app
 
-      - name: Build and Export Next.js app
-        run: |
-          npm run build
-          npm run export
+      - name: Build app
+        run: npm run build && npm run export
+        working-directory: aethers_app
 
       - name: Deploy to Azure Static Web Apps
         id: builddeploy
