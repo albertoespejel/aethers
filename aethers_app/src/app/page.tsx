@@ -3,19 +3,20 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="relative grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div className="absolute top-0 left-0 p-4 flex items-center gap-x-4">
+      <div className="absolute top-0 left-0 p-4 flex items-center gap-x-0">
         <Image
           src="/images/logo.png"
           alt="SPN Icon"
           width={100}
           height={100}
-          className="rounded-full"
+          className="rounded-full sm:width-[100px] sm:height-[100px]"
         />
         <Image
           src="/images/textwhite.png"
           alt="Aethers Media"
           width={230} // Adjust size as needed
           height={70} // Adjust size as needed
+          className="hidden sm:block"
         />
       </div>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
