@@ -2,12 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
-  const menuItems = ["AI","Tech", "Music", "Art"]; // Add new pages here
+  const menuItems = ["Tech", "Music"]; // Add new pages here
 
   return (
     <nav className="flex items-center justify-between px-0 py-0 text-[var(--foreground)] fixed top-0 left-0 w-full z-50" style={{backgroundColor: "#0a0a0a", fontFamily: "var(--font-geist-mono)",}}>
       {/* Logo Section */}
-      <div className="flex items-center gap-x-0">
+      <div className="flex items-center gap-x-0 flex-shrink-0 min-w-0">
         <Image
           src="/images/logo.png"
           alt="SPN Icon"
@@ -24,8 +24,25 @@ const Navbar = () => {
         />
       </div>
 
+      {/* Search Bar (desktop) */}
+      <div className="hidden sm:flex flex-1 justify-center px-4">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="w-full max-w-xs md:max-w-sm lg:max-w-md px-3 py-1 rounded bg-[#222] text-white border border-gray-700 focus:outline-none"
+        />
+      </div>
+
       {/* Menu Section */}
-      <ul className="flex gap-x-8 sm:gap-x-20 pr-6 text-sm">
+      <ul className="flex items-center gap-x-8 sm:gap-x-20 pr-6 text-sm">
+        {/* Search Icon (mobile only) */}
+        <li className="block sm:hidden">
+          <button className="p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
+        </li>
         {menuItems.map((item) => (
           <li key={item}>
             <Link href={`/${item.toLowerCase()}`} className="hover:underline">
