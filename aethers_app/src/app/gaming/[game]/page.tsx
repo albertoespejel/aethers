@@ -12,7 +12,7 @@ export function generateStaticParams() {
   
 }
 
-export default async function GameArticlesPage({ params }: { params: { game: string } }) {
+export default async function GameArticlesPage({ params }: { params: Promise<{ game: string }> }) {
   const{ game } = await params;  
   const gameArticles = articles.filter(
     (a) => a.category === "gaming" && a.topic === game
