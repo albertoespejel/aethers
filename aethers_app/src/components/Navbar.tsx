@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,21 +8,23 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between px-0 py-0 text-[var(--foreground)] fixed top-0 left-0 w-full z-50" style={{backgroundColor: "#0a0a0a", fontFamily: "var(--font-geist-mono)",}}>
       {/* Logo Section */}
-      <div className="flex items-center gap-x-0 flex-shrink-0 min-w-0">
-        <Image
-          src="/images/logo.png"
-          alt="SPN Icon"
-          width={70}
-          height={70}
-          className="rounded-full sm:width-[100px] sm:height-[100px]"
-        />
-        <Image
-          src="/images/textwhite.png"
-          alt="Aethers Media"
-          width={210}
-          height={50}
-          className="hidden sm:block"
-        />
+      <div className="flex items-center gap-x-0 flex-shrink-0 min-w-0 sm:ml-6">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt="SPN Icon"
+            width={70}
+            height={70}
+            className="rounded-full sm:width-[100px] sm:height-[100px]"
+          />
+          <Image
+            src="/images/textwhite.png"
+            alt="Aethers Media"
+            width={210}
+            height={50}
+            className="hidden sm:block"
+          />
+        </Link>
       </div>
 
       {/* Search Bar (desktop) */}
@@ -34,8 +37,9 @@ const Navbar = () => {
       </div>
 
       {/* Menu Section */}
-      <ul className="flex items-center gap-x-8 sm:gap-x-20 pr-6 text-sm">
+      <ul className="flex items-center gap-x-4 sm:gap-x-8 pr-6 text-sm">
         {/* Search Icon (mobile only) */}
+        {/* Ommiting the search icon for phone view
         <li className="block sm:hidden">
           <button className="p-1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
@@ -43,13 +47,37 @@ const Navbar = () => {
             </svg>
           </button>
         </li>
-        {menuItems.map((item) => (
-          <li key={item}>
-            <Link href={`/${item.toLowerCase()}`} className="hover:underline">
-              {item}
-            </Link>
-          </li>
+        */}
+        {menuItems.map((item, idx) => (
+          <React.Fragment key={item}>
+            <li className="flex items-center">
+              <Link href={`/${item.toLowerCase()}`} className="hover:underline">
+                {item}
+              </Link>
+            </li>
+            {idx < menuItems.length - 1 && (
+              <li aria-hidden className="flex items-center">
+                <span className="h-4 w-px bg-red-600 inline-block" />
+              </li>
+            )}
+          </React.Fragment>
         ))}
+
+        <li aria-hidden className="flex items-center">
+          <span className="h-4 w-px bg-red-600 inline-block" />
+        </li>
+
+        <li className="relative group">
+          <span className="hover:underline cursor-pointer">Gaming</span>
+          <ul className="absolute right-0 mt-2 bg-[#0a0a0a] border border-gray-700 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-10 min-w-[180px]">
+            <li>
+              <Link href="/gaming/death-stranding" className="block px-4 py-2 hover:bg-gray-800">
+                Death Stranding
+              </Link>
+            </li>
+            {/* Add more games here */}
+          </ul>
+        </li>
         <li>
           <a
             href="/.auth/login/google"
