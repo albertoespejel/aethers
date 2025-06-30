@@ -28,6 +28,7 @@ export default function RootLayout({
       <head>
         {/* Replace favicon.ico with logo.png */}
         <link rel="icon" href="/images/logo.png" type="image/png" />
+        <meta name="google-site-verification" content="w3t71bN3oWemB27rIiqMQjagJDbiViOBk8rt99vWL6k" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

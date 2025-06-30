@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
   const menuItems = ["Tech", "Music"]; // Add new pages here
-
+  const [gamingOpen, setGamingOpen] = useState(false);
   return (
     <nav className="flex items-center justify-between px-0 py-0 text-[var(--foreground)] fixed top-0 left-0 w-full z-50" style={{backgroundColor: "#0a0a0a", fontFamily: "var(--font-geist-mono)",}}>
       {/* Logo Section */}
@@ -66,6 +66,7 @@ const Navbar = () => {
         <li aria-hidden className="flex items-center">
           <span className="h-4 w-px bg-red-600 inline-block" />
         </li>
+        {/* Gaming Dropdown */}
 
         <li className="relative group">
           <span className="hover:underline cursor-pointer">Gaming</span>
