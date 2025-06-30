@@ -68,18 +68,43 @@ const Navbar = () => {
           <span className="h-4 w-px bg-red-600 inline-block" />
         </li>
         {/* Gaming Dropdown */}
-
-        <li className="relative group">
-          <span className="hover:underline cursor-pointer">Gaming</span>
-          <ul className="absolute right-0 mt-2 bg-[#0a0a0a] border border-gray-700 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-10 min-w-[180px]">
+        
+        <li
+          className="relative group"
+          tabIndex={0}
+          onBlur={() => setGamingOpen(false)}
+        >
+          <span
+            className="hover:underline cursor-pointer"
+            onClick={() => setGamingOpen((open) => !open)}
+            tabIndex={0}
+            onKeyDown={e => {
+              if (e.key === "Enter" || e.key === " ") setGamingOpen((open) => !open);
+            }}
+          >
+            Gaming
+          </span>
+          <ul
+            className={`
+              absolute right-0 mt-2 bg-[#0a0a0a] border border-gray-700 rounded shadow-lg z-10 min-w-[180px]
+              ${gamingOpen ? "block" : "hidden"}
+              group-hover:block
+              transition-opacity
+            `}
+          >
             <li>
-              <Link href="/gaming/death-stranding" className="block px-4 py-2 hover:bg-gray-800">
+              <Link
+                href="/gaming/death-stranding"
+                className="block px-4 py-2 hover:bg-gray-800"
+                onClick={() => setGamingOpen(false)}
+              >
                 Death Stranding
               </Link>
             </li>
             {/* Add more games here */}
           </ul>
         </li>
+
         <li>
           <a
             href="/.auth/login/google"
