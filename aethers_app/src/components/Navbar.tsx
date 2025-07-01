@@ -72,7 +72,6 @@ const Navbar = () => {
         <li
           className="relative group"
           tabIndex={0}
-          onBlur={() => setGamingOpen(false)}
         >
           <span
             className="hover:underline cursor-pointer"
@@ -90,6 +89,7 @@ const Navbar = () => {
               ${gamingOpen ? "block" : "hidden"}
               group-hover:block
               transition-opacity
+              pointer-events-auto
             `}
           >
             <li>
