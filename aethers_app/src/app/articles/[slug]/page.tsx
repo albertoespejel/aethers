@@ -26,7 +26,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           />
         </div>
       )}
-      <p className="mt-4 text-lg">{article.content}</p>
+      <h2 className="text=xl font-medium text-gray-400 mb-4">{article.content}</h2>
+      <div className="mt-6 text-base">{article.body}</div>
     </article>
   );
 }
